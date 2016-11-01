@@ -53,10 +53,10 @@ while True:
     teamInfoObj = json.loads(tmpTeamInfoResponse)
 
     # Write the data to our text files
-    latestdonation(participantDonationInfoJSON)
-    topdonation(participantDonationInfoJSON)
-    mytotalraised(participantInfoJSON)
-    teamtotalraised(teamInfoJSON)
+    latest_donation(participantDonationInfoJSON)
+    top_donation(participantDonationInfoJSON)
+    my_total_raised(participantInfoJSON)
+    team_total_raised(teamInfoJSON)
 
     time.sleep(60)
 
