@@ -27,12 +27,8 @@ def write_to_text_file(data, filename):
         print(data)
 
 
-def check_for_changes(data, filename):
-    print("hi")
-
-
 def latest_donation(json):
-    latest_donation_amount = str(json[0]['donorName'] + " - $" + json[0]['donationAmount'])
+    latest_donation_amount = json[0]['donorName'] + " - $" + str(int(json[0]['donationAmount']))
     write_to_text_file(latest_donation_amount, "LastDonation.txt")
     donation_amount = int(json[0]['donationAmount'])
     donor_name = json[0]['donorName']
@@ -48,12 +44,12 @@ def top_donation(new_donor, new_donation):
 
 
 def my_total_raised(json):
-    my_current_total = "$" + json('totalRaisedAmount')
+    my_current_total = "$" + str(int(json['totalRaisedAmount']))
     write_to_text_file(my_current_total, "MyTotalRaised.txt")
 
 
 def team_total_raised(json):
-    team_current_total = "$" + json('totalRaisedAmount')
+    team_current_total = "$" + str(int(json['totalRaisedAmount']))
     write_to_text_file(team_current_total, "TeamTotalRaised.txt")
 
 
@@ -75,10 +71,9 @@ while True:
     teamInfoObj = json.loads(tmpTeamInfoResponse)
 
     # Write the data to our text files
-    latest_donation(participantDonationInfoJSON)
-    top_donation(participantDonationInfoJSON)
-    my_total_raised(participantInfoJSON)
-    team_total_raised(teamInfoJSON)
+    latest_donation(participantDonationInfoObj)
+    my_total_raised(participantInfoObj)
+    team_total_raised(teamInfoObj)
 
     time.sleep(60)
 
